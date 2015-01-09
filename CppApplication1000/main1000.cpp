@@ -44,12 +44,14 @@ int main(int argc, char** argv) {
     
     
     if(WordChainCount>=2){
+        cout<< "CC = :" << WordChainCount;
         WordChainCount = 0;
         WordA = WordB;
         goto CycleN;
     }
     else{
         cout<<"End Of Chain Word : "+WordB;
+        cout<< "CC = :" << WordChainCount;
     }
     
     return 0;
@@ -79,8 +81,8 @@ int WordChain(string WordA,string WordB){
     int CycleOfString = 0;
     
     for(CycleOfString=0;CycleOfString<=3;CycleOfString++){
-        if(WordA[IndexOfWord]==WordB[IndexOfWord]){
-            ++KeepChainLeg;
+        if(WordA[CycleOfString]==WordB[CycleOfString]){
+            KeepChainLeg = KeepChainLeg+1;
         }
     }
     return KeepChainLeg;
