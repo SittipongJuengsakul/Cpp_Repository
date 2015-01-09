@@ -21,7 +21,12 @@ using namespace std;
  */
 int EnterLineOne();
 int EnterLineTwo();
+string EnterEverLine();
+int WordChain(string ,string);
 int main(int argc, char** argv) {
+    string WordA;
+    string WordB;
+    int WordChainCount;
     int L = EnterLineOne();
     if(L<3 || L>1000){
         cout << "Error L<3 and L>1000";
@@ -32,9 +37,20 @@ int main(int argc, char** argv) {
         cout << "Error N<1 and N>30000";
         return 0;
     }
+    WordA = EnterEverLine();
+    
+    CycleN:WordB = EnterEverLine();
+    WordChainCount = WordChain(WordA,WordB);
     
     
-    
+    if(WordChainCount>=2){
+        WordChainCount = 0;
+        WordA = WordB;
+        goto CycleN;
+    }
+    else{
+        cout<<"End Of Chain Word : "+WordB;
+    }
     
     return 0;
 }
@@ -50,4 +66,22 @@ int EnterLineTwo(){
     cout << "Enter Num of N (1<=N<=30000 : ";
     cin >> N;
     return N;
+}
+string EnterEverLine(){
+    string Word;
+    cout << "Enter Word 4 character : ";
+    cin >> Word;
+    return Word;
+}
+int WordChain(string WordA,string WordB){
+    int IndexOfWord;
+    int KeepChainLeg = 0;
+    int CycleOfString = 0;
+    
+    for(CycleOfString=0;CycleOfString<=3;CycleOfString++){
+        if(WordA[IndexOfWord]==WordB[IndexOfWord]){
+            ++KeepChainLeg;
+        }
+    }
+    return KeepChainLeg;
 }
