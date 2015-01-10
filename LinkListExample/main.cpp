@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     node *head; //เก็บตำแหน่งแรกของโหนด
     node *tail; //เก็บโหนดสุดท้ายของโหนด
     int num = 0;
-    
+    string WordOfInput;
     temp = new node;
     temp->x = "REAR";
     temp->prev = NULL;
@@ -23,26 +23,27 @@ int main(int argc, char** argv) {
     tail = temp;
     num = num+1;
     
-    temp = new node;
-    temp->x = "CEAR";
-    temp->prev = tail;
-    tail->next = temp;
-    tail = temp;
-    num =  num+1;
     
-    temp = new node;
-    temp->x = "XEAR";
-    temp->prev = tail;
-    tail->next = temp;
-    tail = temp;
-    num =  num+1;
-    tail->next = NULL;
+    while(WordOfInput!="1"){
+        cout<<"Input : ";
+        cin>>WordOfInput;
+        if(WordOfInput!="1"){
+        temp = new node;
+        temp->x = WordOfInput;
+        temp->prev = tail;
+        tail->next = temp;
+        tail = temp;
+        num =  num+1;
+        }
+        else{
+            cout<<"end Node!!;"<<endl;
+        }
+    }
     
-    int i;for(i=1;i<=num;i++){
-        cout<<"Node "<<i<<" = " << tail->x<<endl;
-        tail = tail->prev;
+    int i;for(i=1;i<=num;i++){ // ปริ้น โหนด
+        cout<<"Node "<<i<<" = " << head->x<<endl;
+        head = head->next;
     }
     
     return 0;
 }
-
