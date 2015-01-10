@@ -16,6 +16,7 @@ int main(int argc, char** argv) {
     node *tail; //เก็บโหนดสุดท้ายของโหนด
     int num = 0;
     string WordOfInput;
+    
     temp = new node;
     temp->x = "REAR";
     temp->prev = NULL;
