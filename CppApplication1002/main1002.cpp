@@ -26,7 +26,24 @@ using namespace std;
  
  */
 int main(int argc, char** argv) {
-
+    string TXT; //text ที่ไช้เก็บข้อมูลทั้งหมด
+    int page; //ไช้เก็บเลขหน้าจากคีย์บอร์ด
+    int NumLoopAddTXT;
+    const int i=1,v=5,x=10,l=50,c=100; // ประกาศค่าคงที่ เลขโรมัน กับ เลขอารบิก
+    
+    cout << "You Want Page ? : " ;
+    cin>>page;
+    
+    if(page<5){
+        if(page<=3){
+            for(NumLoopAddTXT=0;NumLoopAddTXT<=page;NumLoopAddTXT++){
+            TXT = "i";
+            }
+        }
+        if(page==4){
+            TXT = "iv";
+        }
+    }
     return 0;
 }
 
