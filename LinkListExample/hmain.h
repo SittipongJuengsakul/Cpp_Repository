@@ -15,6 +15,7 @@ using namespace std;
 struct node {
   string x;
   node *next;
+  node *prev;
 };
 
 #endif	/* HMAIN_H */
