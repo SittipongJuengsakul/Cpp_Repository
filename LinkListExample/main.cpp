@@ -16,16 +16,19 @@ int main(int argc, char** argv) {
     
     head = new node;
     head->next = 0;
+    head->prev = 0;
     head->x = "REAR";
     temp = head;
     
     temp->next = new node;
+    temp->prev = head;
     temp = temp->next;
     temp->next = 0;
     temp->x = "CEAR";
     
     cout <<"Value head is "<< head->x << endl;;
     cout <<"Value temp is "<< temp->x;
+    //cout <<"Value temp is "<< temp->prev->x;
     return 0;
 }
 
