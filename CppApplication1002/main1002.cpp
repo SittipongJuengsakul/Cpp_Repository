@@ -28,6 +28,7 @@ using namespace std;
 int main(int argc, char** argv) {
     string TXT; //text ที่ไช้เก็บข้อมูลทั้งหมด
     int page; //ไช้เก็บเลขหน้าจากคีย์บอร์ด
+    int afterpage; //ไช้เก็บข้อมูลหลังเปลี่ยน
     int keepInPage; //เก็บค่าสำหรับเก็บแทน page
     int NumLoopAddTXT;
     int cleanPage; //เก็บค่าไว้ลดจำนวนหลัก
@@ -37,8 +38,9 @@ int main(int argc, char** argv) {
     int conPage;//วนจนครบจำนวนหน้า
     cout << "You Want Page ? : " ;
     cin>>page;
-    
-    for(page;page>0;page--){
+    afterpage = page;
+    for(afterpage;afterpage>0;afterpage--){
+    page = afterpage;
     rePage:
     if(page>400){
         cout<<"Page is Faill please input 1 - 399"<<endl;
@@ -81,9 +83,7 @@ int main(int argc, char** argv) {
                 }
                 else if(keepInPage>=5){
                     TXT = TXT + "l";
-                }
-            page = page-cleanPage;
-            
+                }      
         }
         
         else if(page>=100 && page<400){ //หลักร้อย
@@ -93,9 +93,8 @@ int main(int argc, char** argv) {
                 TXT = TXT+"c";
             }
             page = page-cleanPage;
-            
         }  
-    }
+      }
     }   
     
     //เริ่มคำนวนจำนวน
