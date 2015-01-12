@@ -28,22 +28,98 @@ using namespace std;
 int main(int argc, char** argv) {
     string TXT; //text ที่ไช้เก็บข้อมูลทั้งหมด
     int page; //ไช้เก็บเลขหน้าจากคีย์บอร์ด
+    int keepInPage; //เก็บค่าสำหรับเก็บแทน page
     int NumLoopAddTXT;
+    int cleanPage; //เก็บค่าไว้ลดจำนวนหลัก
+    int I=0,V=0,X=0,L=0,C=0,ii;//เก็บค่าก่อนนับ
+    int sizeTXT;//นับจำนวน TXT
     const int i=1,v=5,x=10,l=50,c=100; // ประกาศค่าคงที่ เลขโรมัน กับ เลขอารบิก
-    
+    int conPage;//วนจนครบจำนวนหน้า
     cout << "You Want Page ? : " ;
     cin>>page;
     
-    if(page<5){
-        if(page<=3){
-            for(NumLoopAddTXT=0;NumLoopAddTXT<=page;NumLoopAddTXT++){
-            TXT = "i";
+    for(page;page>0;page--){
+    rePage:
+    if(page>400){
+        cout<<"Page is Faill please input 1 - 399"<<endl;
+        exit(0);
+    }
+    
+    else{
+        if(page<10&&page>=1){ // หลักหน่วย
+            keepInPage = page%10;
+            if(keepInPage<=3){
+                for(keepInPage;keepInPage>0;keepInPage--){
+                    TXT = TXT + "i";
+                }
+            }
+                else if(keepInPage==4){
+                    TXT = TXT + "iv";
+                }
+                else if(keepInPage>=5&&keepInPage<9){
+                    TXT = TXT + "v";
+                    if(keepInPage>=6&&keepInPage<=8){
+                        for(keepInPage;keepInPage>5;keepInPage--){
+                        TXT = TXT+"i";
+                        }
+                    }
+                }
+                else if(keepInPage==9){
+                    TXT = TXT + "ix";
+                }
+        }
+        else if(page<100&&page>=10){ //หลักสิบ
+            keepInPage = page/10;
+            cleanPage = keepInPage*10;
+            if(keepInPage<=3){
+                for(keepInPage;keepInPage>0;keepInPage--){
+                    TXT = TXT + "x";
+                }
+            }
+                else if(keepInPage==4){
+                    TXT = TXT + "il";
+                }
+                else if(keepInPage>=5){
+                    TXT = TXT + "l";
+                }
+            page = page-cleanPage;
+            
+        }
+        
+        else if(page>=100 && page<400){ //หลักร้อย
+            keepInPage = page/100;
+            cleanPage = keepInPage*100;
+            for(keepInPage;keepInPage>0;keepInPage--){
+                TXT = TXT+"c";
+            }
+            page = page-cleanPage;
+            
+        }  
+    }
+    }   
+    
+    //เริ่มคำนวนจำนวน
+        sizeTXT = TXT.size();
+        for(ii=0;ii<=sizeTXT;ii++){
+            if(TXT[ii]=='i'){
+                I = I+1;
+            }
+            else if(TXT[ii] == 'v'){
+                V = V+1;
+            }
+            else if(TXT[ii] =='x'){
+                X = X+1;
+            }
+            else if(TXT[ii] == 'l'){
+                L = L+1;
+            }
+            else if(TXT[ii] == 'c'){
+                C = C+1;
             }
         }
-        if(page==4){
-            TXT = "iv";
-        }
-    }
+        cout << TXT<<endl;
+        cout << I << " " << V << " " << X << " " << L << " " << C << endl;
+    
     return 0;
 }
 
